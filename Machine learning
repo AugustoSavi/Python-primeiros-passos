@@ -1,0 +1,145 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled0.ipynb",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/AugustoSavi/Python-primeiros-passos/blob/master/Machine%20learning\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "oLtrRdfDkPVT",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        "# tem pelo longo? sim = 1/ nao = 0\n",
+        "#tem perna curta? sim = 1/ nao = 0\n",
+        "#faz auau?        sim = 1/ nao = 0\n",
+        "\n",
+        "porco1 = [0,1,0]\n",
+        "porco2 = [0,1,1]\n",
+        "porco3 = [1,1,0]\n",
+        "\n",
+        "cachorro1 = [0,1,1]\n",
+        "cachorro2 = [1,0,1]\n",
+        "cachorro3 = [1,1,1]\n",
+        "\n",
+        "#porco ->1 cachorro->0\n",
+        "treino = [porco1,porco2,porco3,cachorro1,cachorro2,cachorro3]\n",
+        "\n",
+        "resposta = [1,1,1,0,0,0]"
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "HasSYrhCqyJo",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "394474a3-a303-47c3-bcfd-646ae996776f"
+      },
+      "source": [
+        "from sklearn.svm import LinearSVC\n",
+        "modelo = LinearSVC()\n",
+        "\n",
+        "modelo.fit(treino, resposta)\n",
+        "\n",
+        "animalmisterioso = [1,1,1]\n",
+        "\n",
+        "modelo.predict([animalmisterioso])"
+      ],
+      "execution_count": 12,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "array([0])"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 12
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "uwEEAAR3na-E",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "74dac987-7158-4720-ea04-d9785d4603a3"
+      },
+      "source": [
+        "misterioso1 = [1,1,1]\n",
+        "misterioso2 = [1,1,0]\n",
+        "misterioso3 = [0,1,1]\n",
+        "\n",
+        "teste = [misterioso1, misterioso2 , misterioso3]\n",
+        "\n",
+        "resposta_misterio = modelo.predict(teste)\n",
+        "\n",
+        "resposta_teste = [ 0,1,1]\n",
+        "\n",
+        "(resposta_misterio == resposta_teste).sum()/ len(resposta_misterio)"
+      ],
+      "execution_count": 13,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "0.6666666666666666"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 13
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "KHRIT4_TmZTO",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
