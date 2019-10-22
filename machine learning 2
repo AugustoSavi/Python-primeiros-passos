@@ -1,0 +1,542 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "name": "Untitled1.ipynb",
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/AugustoSavi/Python-primeiros-passos/blob/master/machine%20learning%202\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "8BUkq02Yph1r",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "6caa1851-f45c-493d-de03-3e56df2b04bf"
+      },
+      "source": [
+        "import pandas as pd\n",
+        "\n",
+        "uri = \"http://vieiraroger.com.br/website.csv\"\n",
+        "\n",
+        "dados = pd.read_csv(uri)\n",
+        "dados.head()"
+      ],
+      "execution_count": 25,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>home</th>\n",
+              "      <th>how_it_works</th>\n",
+              "      <th>contact</th>\n",
+              "      <th>bought</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   home  how_it_works  contact  bought\n",
+              "0     1             1        0       0\n",
+              "1     1             1        0       0\n",
+              "2     1             1        0       0\n",
+              "3     1             1        0       0\n",
+              "4     1             1        0       0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 25
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "klfs1DKFq-Kb",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "6830b4fd-6b86-4f8b-c54d-0bc01c4ef561"
+      },
+      "source": [
+        "mapa = {\n",
+        "    \"home\": \"principal\",\n",
+        "    \"how_it_works\": \"como_funciona\",\n",
+        "    \"contact\" : \"contato\",\n",
+        "    \"bought\" : \"comprou\"\n",
+        "}\n",
+        "dados = dados.rename(columns = mapa)\n",
+        "dados.head()"
+      ],
+      "execution_count": 26,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>principal</th>\n",
+              "      <th>como_funciona</th>\n",
+              "      <th>contato</th>\n",
+              "      <th>comprou</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   principal  como_funciona  contato  comprou\n",
+              "0          1              1        0        0\n",
+              "1          1              1        0        0\n",
+              "2          1              1        0        0\n",
+              "3          1              1        0        0\n",
+              "4          1              1        0        0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 26
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "9GHucRySqH22",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "1eac94ed-9957-4bd7-8714-49edb031afe5"
+      },
+      "source": [
+        "x = dados[[\"principal\",\"como_funciona\",\"contato\"]]\n",
+        "x.head()"
+      ],
+      "execution_count": 34,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>principal</th>\n",
+              "      <th>como_funciona</th>\n",
+              "      <th>contato</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>1</td>\n",
+              "      <td>1</td>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   principal  como_funciona  contato\n",
+              "0          1              1        0\n",
+              "1          1              1        0\n",
+              "2          1              1        0\n",
+              "3          1              1        0\n",
+              "4          1              1        0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 34
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "74mXIn04sih7",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "XaAuNi-kslhb",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 204
+        },
+        "outputId": "fa164976-e378-4ddc-9365-11c26e939966"
+      },
+      "source": [
+        " y = dados[[\"comprou\"]]\n",
+        " y.head()"
+      ],
+      "execution_count": 35,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/html": [
+              "<div>\n",
+              "<style scoped>\n",
+              "    .dataframe tbody tr th:only-of-type {\n",
+              "        vertical-align: middle;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe tbody tr th {\n",
+              "        vertical-align: top;\n",
+              "    }\n",
+              "\n",
+              "    .dataframe thead th {\n",
+              "        text-align: right;\n",
+              "    }\n",
+              "</style>\n",
+              "<table border=\"1\" class=\"dataframe\">\n",
+              "  <thead>\n",
+              "    <tr style=\"text-align: right;\">\n",
+              "      <th></th>\n",
+              "      <th>comprou</th>\n",
+              "    </tr>\n",
+              "  </thead>\n",
+              "  <tbody>\n",
+              "    <tr>\n",
+              "      <th>0</th>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>1</th>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>2</th>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>3</th>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "    <tr>\n",
+              "      <th>4</th>\n",
+              "      <td>0</td>\n",
+              "    </tr>\n",
+              "  </tbody>\n",
+              "</table>\n",
+              "</div>"
+            ],
+            "text/plain": [
+              "   comprou\n",
+              "0        0\n",
+              "1        0\n",
+              "2        0\n",
+              "3        0\n",
+              "4        0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 35
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "jcf9SGchsrgK",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "804cc0b2-aba4-4973-ae88-a3172f06e839"
+      },
+      "source": [
+        "dados.shape\n"
+      ],
+      "execution_count": 36,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "(99, 4)"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 36
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "y0LE3wtNta_1",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 71
+        },
+        "outputId": "fa1e2ad0-1006-4f40-fce2-36e6da0d6758"
+      },
+      "source": [
+        "treino_x = x[:80]\n",
+        "treino_y = y[:80]\n",
+        "teste_x = x[80:]\n",
+        "teste_y = y[80:]\n",
+        "\n",
+        "from sklearn.svm import LinearSVC\n",
+        "\n",
+        "modelo = LinearSVC()\n",
+        "modelo.fit(treino_x,treino_y)\n",
+        "\n",
+        "previsoes = modelo.predict(teste_x)"
+      ],
+      "execution_count": 41,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "text": [
+            "/usr/local/lib/python3.6/dist-packages/sklearn/utils/validation.py:724: DataConversionWarning: A column-vector y was passed when a 1d array was expected. Please change the shape of y to (n_samples, ), for example using ravel().\n",
+            "  y = column_or_1d(y, warn=True)\n"
+          ],
+          "name": "stderr"
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "MrtrWCMTuMFY",
+        "colab_type": "code",
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 34
+        },
+        "outputId": "9a1eee98-5710-43c3-af37-1595cbb0f0b6"
+      },
+      "source": [
+        "from sklearn.metrics import accuracy_score\n",
+        "\n",
+        "acuracia = accuracy_score(teste_y,previsoes)\n",
+        "acuracia"
+      ],
+      "execution_count": 42,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "1.0"
+            ]
+          },
+          "metadata": {
+            "tags": []
+          },
+          "execution_count": 42
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "metadata": {
+        "id": "PizYdagpwVq2",
+        "colab_type": "code",
+        "colab": {}
+      },
+      "source": [
+        ""
+      ],
+      "execution_count": 0,
+      "outputs": []
+    }
+  ]
+}
